@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Divisores.Application\Divisores.Application.csproj" />
+    <ProjectReference Include="..\Divisores.Domain\Divisores.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

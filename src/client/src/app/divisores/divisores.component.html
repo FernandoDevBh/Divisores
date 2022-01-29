@@ -1,0 +1,45 @@
+<div class="container mt-2">
+    <div class="row d-flex flex-column">        
+        <form [formGroup]="divisorForm" autocomplete="off" class="form w-25 mt-2 mt-md-0" (ngSubmit)="gerarDivisores()">
+            <div class="form-group">
+                <input                
+                    class="form-control mr-sm-2"
+                    [formControl]="divisorForm.controls['numero']"
+                    [class.is-invalid]="divisorForm.controls['numero'].touched && divisorForm.controls['numero'].invalid"
+                    type="number"
+                    placeholder="Número"
+                >
+                <div
+                    *ngIf="divisorForm.controls['numero'].errors?.required"
+                    class="invalid-feedback">
+                    Você deve informar um número
+                </div>
+                <div
+                    *ngIf="divisorForm.controls['numero'].errors?.numeroInvalido"
+                    class="invalid-feedback">
+                    Número informado não é um inteiro natural.
+                </div>
+                <div
+                    *ngIf="divisorForm.controls['numero'].errors?.menorQueZero"
+                    class="invalid-feedback">
+                    Número deve ser maior que 0.
+                </div>                
+            </div>
+            <button class="btn btn-success my-2 my-sm-0 w-100" type="submit">Gerar Divisores</button>            
+        </form>        
+        <table class="table table-hover mt-3" style="width: 75%;" *ngIf="divisores">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 50%;">Números Divisores de {{numero}}</th>
+                    <th scope="col" style="width: 20%;">Divisores Primos de {{numero}}</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr scope="row" *ngFor="let divisor of divisores.itensDivisores">
+                    <td>{{divisor.numeroDivisor}}</td>
+                    <td>{{divisor.numeroPrimo}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
